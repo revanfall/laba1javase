@@ -1,5 +1,6 @@
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.eclipse.jetty.server.handler.ContextHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +15,23 @@ public class HelloServer extends AbstractHandler {
         httpServletResponse.setContentType("text/html;chatset=utf-8");
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         request.setHandled(true);
-        httpServletResponse.getWriter().println("<h1>Hello Server</h1>");
-        httpServletResponse.getWriter().println(request.getHttpFields());
+
+        String html="<!DOCTYPE html>\n"+
+                "<html>\n" +
+                        "<head>\n" +
+                        "<link rel=\"stylesheet\" type=\"text/css\" href=\"C:\\Users\\Ilya\\Desktop\\main.css\"/>\n" +
+                        "</head>\n" +
+                        "<body>\n" +
+                        "<h1>Hello Server</h1>\n"+
+                        "<h2>Files</h2>\n" +
+                        "<p>Pictures</p>\n" +
+                        "</body>\n" +
+                        "</html>";
+        httpServletResponse.getWriter().println(html);
+        httpServletResponse.getWriter().println("<img src=\"resources/day-2-grivni-2-768x578.jpg\"/>\n" );
+     httpServletResponse.getWriter().println(request.getHttpFields());
       //  httpServletResponse.sendRedirect("http://www.google.com/");
+
 
     }
 }
