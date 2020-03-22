@@ -3,6 +3,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.util.log.Slf4jLog;
 
 import java.net.URL;
 
@@ -19,6 +20,7 @@ public class ServerStarter {
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] { ch, new HelloServer() });
         server.setHandler(handlers);
+        
     server.start();
     server.join();
     }
